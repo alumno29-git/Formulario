@@ -1,0 +1,309 @@
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: 'Listening to Xdebug on port 0.0.0.0:9003 ...\n'
+  }
+}
+
+Listening to Xdebug on port 0.0.0.0:9003 ...
+<- launchResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 2,
+  command: 'launch',
+  success: true
+}
+
+new connection 1 from from 172.23.0.2
+<- threadEvent
+mw {
+  seq: 0,
+  type: 'event',
+  event: 'thread',
+  body: { reason: 'started', threadId: 1 }
+}
+
+<- initializedEvent
+dw { seq: 0, type: 'event', event: 'initialized' }
+
+-> setFunctionBreakpointsRequest
+{
+  command: 'setFunctionBreakpoints',
+  arguments: { breakpoints: [] },
+  type: 'request',
+  seq: 3
+}
+
+<- setFunctionBreakpointsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 3,
+  command: 'setFunctionBreakpoints',
+  success: true,
+  body: { breakpoints: [] }
+}
+
+-> setExceptionBreakpointsRequest
+{
+  command: 'setExceptionBreakpoints',
+  arguments: { filters: [ 'Error', 'Uncaught Exception' ] },
+  type: 'request',
+  seq: 4
+}
+
+<- setExceptionBreakpointsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 4,
+  command: 'setExceptionBreakpoints',
+  success: true
+}
+
+-> threadsRequest
+{ command: 'threads', type: 'request', seq: 5 }
+
+<- threadsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 5,
+  command: 'threads',
+  success: true,
+  body: { threads: [ iw { id: 1, name: 'Request 1 (9:02:52 PM)' } ] }
+}
+
+-> configurationDoneRequest
+{ command: 'configurationDone', type: 'request', seq: 6 }
+
+<- configurationDoneResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 6,
+  command: 'configurationDone',
+  success: true
+}
+
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: 'Warning: include(encabezado.html): Failed to open stream: No such file or directory\n',
+    source: {
+      name: 'index.php',
+      path: 'file:///home/usuario/mi-formulario-php/app/index.php'
+    },
+    line: 12
+  }
+}
+
+Warning: include(encabezado.html): Failed to open stream: No such file or directory
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: 'Warning: include(encabezado.html): Failed to open stream: No such file or directory\n',
+    source: {
+      name: 'index.php',
+      path: 'file:///home/usuario/mi-formulario-php/app/index.php'
+    },
+    line: 12
+  }
+}
+
+Warning: include(encabezado.html): Failed to open stream: No such file or directory
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: "Warning: include(): Failed opening 'encabezado.html' for inclusion (include_path='.:/usr/local/lib/php')\n",
+    source: {
+      name: 'index.php',
+      path: 'file:///home/usuario/mi-formulario-php/app/index.php'
+    },
+    line: 12
+  }
+}
+
+Warning: include(): Failed opening 'encabezado.html' for inclusion (include_path='.:/usr/local/lib/php')
+<- threadEvent
+mw {
+  seq: 0,
+  type: 'event',
+  event: 'thread',
+  body: { reason: 'exited', threadId: 1 }
+}
+
+-> threadsRequest
+{ command: 'threads', type: 'request', seq: 7 }
+
+<- threadsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 7,
+  command: 'threads',
+  success: true,
+  body: { threads: [] }
+}
+
+new connection 2 from from 172.23.0.2
+<- threadEvent
+mw {
+  seq: 0,
+  type: 'event',
+  event: 'thread',
+  body: { reason: 'started', threadId: 2 }
+}
+
+<- initializedEvent
+dw { seq: 0, type: 'event', event: 'initialized' }
+
+-> setFunctionBreakpointsRequest
+{
+  command: 'setFunctionBreakpoints',
+  arguments: { breakpoints: [] },
+  type: 'request',
+  seq: 8
+}
+
+<- setFunctionBreakpointsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 8,
+  command: 'setFunctionBreakpoints',
+  success: true,
+  body: { breakpoints: [] }
+}
+
+-> setExceptionBreakpointsRequest
+{
+  command: 'setExceptionBreakpoints',
+  arguments: { filters: [ 'Error', 'Uncaught Exception' ] },
+  type: 'request',
+  seq: 9
+}
+
+<- setExceptionBreakpointsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 9,
+  command: 'setExceptionBreakpoints',
+  success: true
+}
+
+-> threadsRequest
+{ command: 'threads', type: 'request', seq: 10 }
+
+<- threadsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 10,
+  command: 'threads',
+  success: true,
+  body: { threads: [ iw { id: 2, name: 'Request 2 (9:02:52 PM)' } ] }
+}
+
+-> configurationDoneRequest
+{ command: 'configurationDone', type: 'request', seq: 11 }
+
+<- configurationDoneResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 11,
+  command: 'configurationDone',
+  success: true
+}
+
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: 'Warning: include(encabezado.html): Failed to open stream: No such file or directory\n',
+    source: {
+      name: 'index.php',
+      path: 'file:///home/usuario/mi-formulario-php/app/index.php'
+    },
+    line: 12
+  }
+}
+
+Warning: include(encabezado.html): Failed to open stream: No such file or directory
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: 'Warning: include(encabezado.html): Failed to open stream: No such file or directory\n',
+    source: {
+      name: 'index.php',
+      path: 'file:///home/usuario/mi-formulario-php/app/index.php'
+    },
+    line: 12
+  }
+}
+
+Warning: include(encabezado.html): Failed to open stream: No such file or directory
+<- outputEvent
+hw {
+  seq: 0,
+  type: 'event',
+  event: 'output',
+  body: {
+    category: 'stdout',
+    output: "Warning: include(): Failed opening 'encabezado.html' for inclusion (include_path='.:/usr/local/lib/php')\n",
+    source: {
+      name: 'index.php',
+      path: 'file:///home/usuario/mi-formulario-php/app/index.php'
+    },
+    line: 12
+  }
+}
+
+Warning: include(): Failed opening 'encabezado.html' for inclusion (include_path='.:/usr/local/lib/php')
+<- threadEvent
+mw {
+  seq: 0,
+  type: 'event',
+  event: 'thread',
+  body: { reason: 'exited', threadId: 2 }
+}
+
+-> threadsRequest
+{ command: 'threads', type: 'request', seq: 12 }
+
+<- threadsResponse
+ZC {
+  seq: 0,
+  type: 'response',
+  request_seq: 12,
+  command: 'threads',
+  success: true,
+  body: { threads: [] }
+}
+
